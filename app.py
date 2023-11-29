@@ -1,7 +1,7 @@
 import os
 
 import numpy as np
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, render_template
 from PIL import Image
 from keras.models import load_model
 from werkzeug.utils import secure_filename
@@ -12,7 +12,8 @@ app.config['ALLOWED_EXTENSIONS'] = set(['png', 'jpg', 'jpeg'])
 app.config['UPLOAD_FOLDER'] = 'static/uploads/'
 app.config['MODEL_FILE'] = 'model.h5'
 app.config['LABELS_FILE'] = 'labels.txt'
-
+# maximum filesize = 16 mb
+app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
 
 def allowed_file(filename):
     return '.' in filename and \
@@ -41,11 +42,16 @@ def predict_soil_type(image):
 
 @app.route("/")
 def index():
-    return "Hello World!"
+    return "Misalkan gaes kalian bisa menikahi waifu 2D kalian tapi harus durhaka kepada kedua orang tua kalian apakah kalian mau?"
+
+
+@app.route('/nonton')
+def nonton():
+    return render_template('index.html')
 
 
 @app.route("/prediction", methods=["POST"])
-#@auth.login_required()
+@auth.login_required()
 def prediction_route():
     if request.method == "POST":
         image = request.files["image"]
@@ -55,6 +61,8 @@ def prediction_route():
             image_path = os.path.join(app.config["UPLOAD_FOLDER"], filename)
 
             class_name, confidence_score = predict_soil_type(image_path)
+
+            os.remove(filepath)
 
             return jsonify({
                 "status": {
