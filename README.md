@@ -2,10 +2,6 @@
 
 <p align="justify"> This repository contains a collection of resources used during the capstone project for Bangkit Cloud Computing. This project focuses on creating an API using express.js which will be used by the mobile development team. </p>
 
-<p align="center">
-  <img src="https://github.com/GymGuide/GymGuide-ML/assets/90093341/3cf4f9e9-e234-45b1-ba6d-8fbfc9ac37e1" width=30% height=30% >
-</p>
-
 ## Architecture
 
 <p align="justify"> The architecture in cloud computing begins with developers working on their projects and uploading them to the GitHub repository. Subsequently, on the Google Cloud Platform, the Cloud Build service is utilized to clone and execute the Dockerfile. Once the build process is complete, the application is deployed using Cloud Run and becomes ready for use. </p>

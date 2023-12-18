@@ -7,28 +7,50 @@ const port = process.env.PORT || 3000;
 
 app.use(bodyParser.json());
 
-// Route to retrieve exercises based on equipment
+// Route to retrieve exercises based on equipment or muscle
 app.get('/exercises', (req, res) => {
-    const { equipment } = req.query;
+const { equipment, muscle } = req.query;
 
-    // Cari latihan yang memiliki equipment sesuai dengan query parameter
-    const filteredExercises = exercises.filter(exercise => exercise.equipment === equipment);
+    if (equipment) {
+        // Filter exercises based on equipment
+        const filteredExercises = exercises.filter(exercise => exercise.equipment === equipment);
 
-    if (filteredExercises.length > 0) {
-        return res.json({
-            data: filteredExercises,
-            status: {
-                code: 200,
-                message: 'Success retrieving exercises'
-            }
-        });
-    } else {
-        return res.status(404).json({
-            status: {
-                code: 404,
-                message: 'Exercises not found for the specified equipment'
-            }
-        });
+        if (filteredExercises.length > 0) {
+            return res.json({
+                data: filteredExercises,
+                status: {
+                    code: 200,
+                    message: 'Success retrieving exercises'
+                }
+            });
+        } else {
+            return res.status(404).json({
+                status: {
+                    code: 404,
+                    message: 'Exercises not found for the specified equipment'
+                }
+            });
+        }
+    } else if (muscle) {
+        // Filter exercises based on muscle
+        const filteredExercises = exercises.filter(exercise => exercise.muscle === muscle);
+
+        if (filteredExercises.length > 0) {
+            return res.json({
+                data: filteredExercises,
+                status: {
+                    code: 200,
+                    message: 'Success retrieving exercises'
+                }
+            });
+        } else {
+            return res.status(404).json({
+                status: {
+                    code: 404,
+                    message: 'Exercises not found for the specified muscle'
+                }
+            });
+        }
     }
 });
 
