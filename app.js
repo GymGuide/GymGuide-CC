@@ -33,7 +33,7 @@ app.get('/exercises', (req, res) => {
 });
 
 // Route to retrieve all exercises
-app.get('/all-exercises', (req, res) => {
+app.get('/', (req, res) => {
     return res.json({
         data: exercises,
         status: {
