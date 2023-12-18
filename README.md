@@ -17,6 +17,42 @@ To run the project, the following dependencies are required:
 - Node.js
 - Express.js
 
+## List API
+### Exercises API
+This API is used to retrieve exercises based on equipment and muscle.
+```
+URL: exercises/
+Method: GET
+Request Body :
+{
+    equipment, 
+    muscle,
+}
+Success Response :
+{
+  data: List Exercises,
+  status: {
+    code: 200,
+    message: 'Success retrieving exercises'
+  }
+}
+```
+
+### All Exercises API
+This API is used to retrieve all exercises
+```
+URL: /
+Method: GET
+Success Response:
+{
+  data: List Exercises,
+  status: {
+    code: 200,
+    message: 'Success retrieving exercises'
+  }
+}
+```
+
 ## Contributing
 
 <p align="justify"> Contributions to this project are welcome. If you have any ideas, suggestions, or improvements, please submit a pull request. Make sure to follow the existing coding style and guidelines. </p>
