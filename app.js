@@ -7,6 +7,17 @@ const port = process.env.PORT || 3000;
 
 app.use(bodyParser.json());
 
+// Route to retrieve all exercises
+app.get('/', (req, res) => {
+    return res.json({
+        data: exercises,
+        status: {
+            code: 200,
+            message: 'Success retrieving all exercises'
+        }
+    });
+});
+
 // Route to retrieve exercises based on equipment or muscle
 app.get('/exercises', (req, res) => {
 const { equipment, muscle } = req.query;
@@ -52,17 +63,6 @@ const { equipment, muscle } = req.query;
             });
         }
     }
-});
-
-// Route to retrieve all exercises
-app.get('/', (req, res) => {
-    return res.json({
-        data: exercises,
-        status: {
-            code: 200,
-            message: 'Success retrieving all exercises'
-        }
-    });
 });
 
 app.listen(port, () => {
