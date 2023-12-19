@@ -7,7 +7,7 @@
 <p align="justify"> The architecture in cloud computing begins with developers working on their projects and uploading them to the GitHub repository. Subsequently, on the Google Cloud Platform, the Cloud Build service is utilized to clone and execute the Dockerfile. Once the build process is complete, the application is deployed using Cloud Run and becomes ready for use. </p>
 
 <p align="center">
-  <img src="assets/Arsitektur.jpg" width=30% height=30% >
+  <img src="assets/Arsitektur.jpg" width=50% height=50% >
 </p>
 
 ## Requirements
