@@ -64,13 +64,13 @@ def prediction_route():
 
             os.remove(filepath)
 
-            return jsonify({
+           return jsonify({
                 "status": {
                     "code": 200,
                     "message": "Success predicting"
                 },
                 "data": {
-                    "soil_types_prediction": class_name,
+                    "equipment_prediction": class_name,
                     "confidence": float(confidence_score),
                 }
             }), 200
