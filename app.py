@@ -64,7 +64,7 @@ def prediction_route():
 
             os.remove(filepath)
 
-           return jsonify({
+            return jsonify({
                 "status": {
                     "code": 200,
                     "message": "Success predicting"
