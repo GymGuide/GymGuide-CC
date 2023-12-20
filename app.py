@@ -62,7 +62,7 @@ def prediction_route():
 
             class_name, confidence_score = predict_soil_type(image_path)
 
-            os.remove(filepath)
+            os.remove(image_path)
 
             return jsonify({
                 "status": {
