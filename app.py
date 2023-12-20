@@ -62,7 +62,7 @@ def prediction_route():
 
             class_name, confidence_score = predict_soil_type(image_path)
 
-            os.remove(image_path)
+            os.remove(image_path)  # Corrected variable name
 
             return jsonify({
                 "status": {
@@ -90,7 +90,6 @@ def prediction_route():
             },
             "data": None,
         }), 405
-
 
 if __name__ == "__main__":
     app.run(debug=True,
