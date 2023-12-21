@@ -39,17 +39,6 @@ def predict_soil_type(image):
     confidence_score = predictions[0][index]
     return class_name[2:], confidence_score
 
-
-@app.route("/")
-def index():
-    return "Misalkan gaes kalian bisa menikahi waifu 2D kalian tapi harus durhaka kepada kedua orang tua kalian apakah kalian mau?"
-
-
-@app.route('/nonton')
-def nonton():
-    return render_template('index.html')
-
-
 @app.route("/prediction", methods=["POST"])
 @auth.login_required()
 def prediction_route():
